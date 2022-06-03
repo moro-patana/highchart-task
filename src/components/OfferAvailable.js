@@ -1,6 +1,6 @@
 import bankLogo from '../assets/bank-logo.png';
 const cupPrice = 49.49
-const OfferAvailable = ({totalSavings, savingYears, interestRate}) => {
+const OfferAvailable = ({totalSavings, savingYears, interestRate, label}) => {
     const cups = Math.round(totalSavings / cupPrice)
     return(
         <div className="offer-available-container">
@@ -17,11 +17,11 @@ const OfferAvailable = ({totalSavings, savingYears, interestRate}) => {
                   </div>
               </div>
               <div className="offer-available-content-item">
-                  <p className="offer-available-content-description">Total expected savings in <b>{savingYears}</b>: </p>
+                  <p className="offer-available-content-description">Total expected savings in <b>{savingYears} {label}</b>: </p>
                   <div className="total-expected">
                       <div className='total-expected-amount-container'>
                           <p className="total-expected-amount">
-                          {totalSavings} kr (<span>or {cups} cups of coffee :)</span>)
+                          {totalSavings} kr <span>or {cups} cups of coffee :)</span>
                           </p>
                       </div>
                   </div>

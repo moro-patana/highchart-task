@@ -4,6 +4,7 @@ import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 
 const Chart = ({xAxisCategories, seriesData, className}) => {
+    console.log('seriesData::::::',seriesData);
 
   const options = {
     title: {
@@ -13,7 +14,12 @@ const Chart = ({xAxisCategories, seriesData, className}) => {
       categories: xAxisCategories,
     },
     yAxis: {
-      title: null
+        title: null,
+        labels: {
+            formatter: function() {
+                return this.value + ' Kr';
+            }
+        },
     },
     plotOptions: {
       series: {
@@ -25,10 +31,15 @@ const Chart = ({xAxisCategories, seriesData, className}) => {
     },
     series: [{
       data: seriesData,
-      color: 'blue',
+      color: 'rgba(4, 212, 148, 1)',
+      marker: {
+        fillColor: '#FFFFFF',
+        lineWidth: 2,
+        lineColor: null 
+    },
       shadow: {
         color: 'rgba(0, 219, 144, 1)',
-        width: 5,
+        width: 2,
         offsetX: 0,
         offsetY: 0
       }
@@ -36,11 +47,13 @@ const Chart = ({xAxisCategories, seriesData, className}) => {
     }]
   };
   return (
-    <HighchartsReact
-      highcharts={Highcharts}
-      options={options}
-      containerProps={{ className }}
-    />
+    <div>
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={options}
+          containerProps={{ className }}
+        />
+    </div>
   );
 };
 export default Chart;

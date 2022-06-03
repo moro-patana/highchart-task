@@ -5,6 +5,7 @@ import OfferAvailable from "./components/OfferAvailable";
 import IndustributedIncome from "./components/IndustributedIncome";
 import Chart from "./components/Chart";
 import SpendingYears from "./components/SpendingYears";
+import UndistributedIcomeChart from "./components/UndistributedIcomeChart";
 const initialSaving = 17.1;
 const interestRate = 0.02;
 const monthlyContribution = 182;
@@ -41,17 +42,25 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <Chart xAxisCategories={xAxisCategories} seriesData={seriesData} />
-      <SpendingYears
-        handleClick={handleClick}
-        displayedYears={displayedYears}
-      />
-      <IndustributedIncome />
-      <OfferAvailable
-        totalSavings={totalSavings}
-        savingYears={displayedYears}
-        interestRate={interestRate}
-      />
+      <div className="chart-container">
+      <div className="undistributed-icome-chart-container">
+          <UndistributedIcomeChart xAxisCategories={xAxisCategories} />
+          <IndustributedIncome />
+        </div>
+        <div className="spending-years-chart-container">
+          <Chart xAxisCategories={xAxisCategories} seriesData={seriesData} />
+          <SpendingYears
+            handleClick={handleClick}
+            displayedYears={displayedYears}
+          />
+          <OfferAvailable
+            totalSavings={totalSavings}
+            savingYears={displayedYears}
+            label={`${displayedYears > 1 ? "years" : "year"}`}
+            interestRate={interestRate}
+          />
+        </div>
+      </div>
     </div>
   );
 }

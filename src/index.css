@@ -1,92 +1,20 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   font-style: normal;
+  color: #102463;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-p {
+
+p, h1, hr {
   margin: 0;
 }
+
 .container {
-  padding: 1rem;
-}
-
-.container-header-title {
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 75px;
-  text-align: right;
-  color: #102463;
-  margin: 0;
-  text-align: center;
-  padding-bottom: 34px;
-}
-
-.container-header-separator {
-  border-width: 0.5px;
-  border-color: rgba(46, 108, 198, 0.5)rgba(0, 219, 144, 0.5);
-}
-
-.header-alert-container {
-  padding-top: 45px;
-}
-.header-alert-container-content,
-.header-alert-container-icons,
-.container-header-average-month,
-.container-header-average-month-content,
-.bank-details ,
-.offer-available-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.header-alert-container-content {
-  gap: 21.67px;
-  background: #FCFEFF;
-  border: 0.3px solid #102463;
-  border-radius: 6px;
-  padding-top: 9px;
-  padding-left: 10px;
-  padding-right: 14px;
-  padding-bottom: 9px;
-}
-.header-alert-container-icons {
-  gap: 20.67px;
-} 
-
-.header-alert-container-description {
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 120.6%;
-  color: #102463;
-}
-
-.container-header-average-month {
-  gap: 17px;
-  align-items: baseline;
-  padding-top: 66px;
-}
-
-.container-header-average-month-content {
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 44px;
-  color: #102463;
-  gap: 16px;
-}
-.container-header-average-month-content b {
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 55px;
-  color: #2E6CC6;
+  padding: 5%;
 }
 
 button {
@@ -114,47 +42,143 @@ button {
   padding-left: 35px;
   padding-right: 34px;
 }
-.industributed-income {
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 33px;
+.container-header {
+  padding-bottom: 30px;
+}
+
+.container-header-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 42px;
+  text-align: center;
+}
+
+.container-header,
+.chart-container,
+.undistributed-icome-chart-container,
+.spending-years-chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.container-header-alert {
+  background: #FCFEFF;
+  border: 0.3px solid #102463;
+  border-radius: 6px;
+  padding-top: 9px;
+  padding-left: 10px;
+  padding-right: 14px;
+  padding-bottom: 9px;
+}
+.header-alert-container-content,
+.header-alert-container-icons,
+.container-header-average-month,
+.years-container,
+.bank-details {
+  display: flex;
+  flex-direction: row;
+  gap: 21.67px;
+  align-items: center;
+}
+.header-alert-container-icons {
+  gap: 20.67px;
+}
+.container-header-average-month {
+  justify-content: space-between;
+}
+.container-header-average-month-content {
+  display: flex;
+  flex-direction: column;
+}
+.container-header-average-month-content p {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 44px;
+}
+.container-header-average-month-content b {
+  font-weight: 700;
+  color: #2E6CC6;
+}
+.industributed-income a {
+  font-weight: 700;
   color: #102463;
 }
-.total-expected {
-  padding-top: 24px;
-  padding-left: 79px;
+
+.years-container {
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+.offer-available-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.offer-available-content-description {
+  font-size: 10px;
+  text-align: center;
+  padding-bottom: 26px;
 }
 .bank-details {
   gap: 24px;
-  padding-top: 26px;
-  padding-left: 58px;
-  padding-right: 58px;
-  border-right: 1px solid #D5E2F4;
 }
+.bank-name,
 .total-expected-amount {
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 149.6%;
-  text-align: center;
-  color: #2E6CC6;
-}
-.total-expected-amount span {
-  font-size: 14px;
-  font-weight: 400;
-}
-.offer-available-content-description {
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 14px;
-  text-align: center;
-  color: #102463;
-}
-.bank-name {
   font-weight: 600;
   font-size: 24px;
   line-height: 33px;
   color: #2E6CC6;
 }
-.bank-name span {
+.bank-name span,
+.total-expected-amount span {
+  font-size: 16px;
   font-weight: 400;
+}
+
+
+@media (min-width:834px) {
+  .container-header-title{
+    font-size: 64px;
+    line-height: 75px;
+  }
+  .industributed-income {
+    font-size: 24px;
+    line-height: 33px;
+  }
+  .container-header-average-month {
+    justify-content: center;
+  }
+  .container-header-average-month-content {
+    flex-direction: row;
+    gap: 26px;
+    align-items: center;
+  }
+  .container-header-average-month-content p {
+    font-size: 32px;
+    line-height: 44px;
+  }
+  .offer-available-content {
+    flex-direction: row;
+    gap: 0;
+  }
+  .bank-details,
+  .total-expected {
+    padding-left: 58px;
+    padding-right: 58px;
+  }
+  .bank-details {
+    border-right: 1px solid #D5E2F4;
+  }
+}
+
+@media (min-width:1024px) {
+  .chart-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+  }
+  .years-container {
+    gap: 18px;
+  }
 }
