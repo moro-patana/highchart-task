@@ -1,23 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import Header from "./components/Header";
+import OfferAvailable from "./components/OfferAvailable";
+import IndustributedIncome from "./components/IndustributedIncome";
+import Chart from "./components/Chart";
+import SpendingYears from "./components/SpendingYears";
+const initialSaving = 17.1;
+const interestRate = 0.02;
+const monthlyContribution = 182;
 
 function App() {
+  const [displayedYears, setDisplayedYears] = useState(10);
+
+  const yearsAhead = [...Array(displayedYears).keys()].map((number) => number);
+
+  const savingsForYearsAhead = yearsAhead.reduce((acc, currVal) => {
+    let princ = initialSaving; // start deposit
+    const add = monthlyContribution; // monthly deposit (need plus it every year)
+    const rate = interestRate; // interest rate divided to create decimal
+    const months = currVal * 12; //10 years of monthly contributions
+    for (let i = 1; i <= months; i++) {
+      princ += add;
+      princ += princ * (rate / 12);
+    }
+    acc[currVal] = princ;
+    return acc;
+  }, {});
+
+  const currentYear = new Date().getFullYear();
+
+  const xAxisCategories = yearsAhead.map((year) => year + currentYear);
+
+  const seriesData = Object.values(savingsForYearsAhead);
+
+  const totalSavings = [...seriesData].pop().toFixed(2).toLocaleString("en-US");
+  const handleClick = (year) => {
+    setDisplayedYears(year);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      <Chart xAxisCategories={xAxisCategories} seriesData={seriesData} />
+      <SpendingYears
+        handleClick={handleClick}
+        displayedYears={displayedYears}
+      />
+      <IndustributedIncome />
+      <OfferAvailable
+        totalSavings={totalSavings}
+        savingYears={displayedYears}
+        interestRate={interestRate}
+      />
     </div>
   );
 }
