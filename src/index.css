@@ -2,6 +2,11 @@ body {
   margin: 0;
   font-style: normal;
   color: #102463;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
@@ -25,10 +30,8 @@ button {
   text-align: center;
   border-radius: 6px;
   cursor: pointer;
-  padding-top: 11px;
-  padding-left: 31px;
-  padding-right: 35.55px;
-  padding-bottom: 12px;
+  min-width: 137px;
+  min-height: 40px;
 }
 .primary {
   color: #2E6CC6;
@@ -39,8 +42,6 @@ button {
   color: #FCFEFF;
   background: linear-gradient(170.97deg, #2E6CC6 -7.05%, #00DB90 119.29%);
   border: none;
-  padding-left: 35px;
-  padding-right: 34px;
 }
 .container-header {
   padding-bottom: 30px;
@@ -51,6 +52,7 @@ button {
   font-size: 32px;
   line-height: 42px;
   text-align: center;
+  padding-bottom: 34px;
 }
 
 .container-header,
@@ -61,7 +63,13 @@ button {
   flex-direction: column;
   gap: 30px;
 }
-
+.container-header {
+  gap: 0px;
+}
+.container-header-separator {
+  background: linear-gradient(to right, #2E6CC6, #00DB90);
+  margin-bottom: 45px;
+}
 .container-header-alert {
   background: #FCFEFF;
   border: 0.3px solid #102463;
@@ -84,8 +92,10 @@ button {
 .header-alert-container-icons {
   gap: 20.67px;
 }
+
 .container-header-average-month {
   justify-content: space-between;
+  padding-top: 76px;
 }
 .container-header-average-month-content {
   display: flex;
@@ -117,7 +127,7 @@ button {
 }
 .offer-available-content-description {
   font-size: 10px;
-  text-align: center;
+  text-align: start;
   padding-bottom: 26px;
 }
 .bank-details {
@@ -130,10 +140,19 @@ button {
   line-height: 33px;
   color: #2E6CC6;
 }
-.bank-name span,
-.total-expected-amount span {
-  font-size: 16px;
+.bank-name span {
   font-weight: 400;
+}
+.bank-name,
+.total-expected-amount {
+  display: flex;
+  flex-direction: column;
+}
+.total-expected-amount span {
+  font-size: 14px;
+  line-height: 20.94px;
+  font-weight: 400;
+  text-align: start;
 }
 
 
@@ -148,6 +167,7 @@ button {
   }
   .container-header-average-month {
     justify-content: center;
+    align-items: baseline;
   }
   .container-header-average-month-content {
     flex-direction: row;
@@ -170,15 +190,42 @@ button {
   .bank-details {
     border-right: 1px solid #D5E2F4;
   }
+  .total-expected-amount {
+    font-size: 36px;
+    line-height: 53.86px;
+  }
 }
 
 @media (min-width:1024px) {
+  .container-header-alert {
+    max-width: fit-content;
+    margin: auto;
+  }
+  .header-alert-container-description {
+    font-size: 20px;
+  }
   .chart-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 60px;
   }
   .years-container {
     gap: 18px;
+
+  }
+  .offer-available-content-description {
+    text-align: center;
+  }
+  .container-header-average-month{
+    padding-bottom: 224.37px;
+  }
+  .container-header-average-month-content b {
+    font-size: 40px;
+  }
+  
+  .total-expected {
+    padding-right: 0;
+  }
+  .bank-details {
+    padding-left: 0;
   }
 }
